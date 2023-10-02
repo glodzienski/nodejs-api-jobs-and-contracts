@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  deel-task:
+    image: node:14
+    container_name: deel-task-container
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+    command:
+      - /bin/sh
+      - -c
+      - |
+        npm install && npm run seed && npm start
